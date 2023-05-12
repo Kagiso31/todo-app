@@ -1,94 +1,211 @@
 :root {
-    /* Theme */
-    color-scheme: light dark;
+  /* Theme */
+  /* color-scheme: dark light; */
 
-    --text-color: #222;
-    --bg-color: #fff;
+  --text-color: #222;
+  --bg-color: #fff;
 
-    /* Colors */
+  /* Colors */
 
-        /* Primary */
-        --bright-blue: hsl(220, 98%, 61%);
-        --check-background: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+  /* Primary */
+  --bright-blue: hsl(220, 98%, 61%);
+  --check-background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
-        /* Light Theme */
-        --very-light-gray: hsl(0, 0%, 98%);
-        --very-light-grayish-blue: hsl(236, 33%, 92%);
-        --light-grayish-blue: hsl(233, 11%, 84%);
-        --dark-grayish-blue: hsl(236, 9%, 61%);
-        --very-dark-grayish-blue: hsl(235, 19%, 35%);
+  /* Light Theme */
+  --very-light-gray: hsl(0, 0%, 98%);
+  --very-light-grayish-blue: hsl(236, 33%, 92%);
+  --light-grayish-blue: hsl(233, 11%, 84%);
+  --dark-grayish-blue: hsl(236, 9%, 61%);
+  --very-dark-grayish-blue: hsl(235, 19%, 35%);
 
-        /* Dark Theme */
-        --very-dark-blue: hsl(235, 21%, 11%);
-        --very-dark-desaturated-blue: hsl(235, 24%, 19%);
-        --light-grayish-blue: hsl(234, 39%, 85%);
-        --light-grayish-blue-hover: hsl(236, 33%, 92%);
-        --dark-grayish-blue: hsl(234, 11%, 52%);
-        --very-dark-grayish-blue: hsl(233, 14%, 35%);
-        --very-dark-grayish-blue: hsl(237, 14%, 26%);
-    
-    /* Typography */
+  /* Dark Theme */
+  --very-dark-blue: hsl(235, 21%, 11%);
+  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  --light-grayish-blue: hsl(234, 39%, 85%);
+  --light-grayish-blue-hover: hsl(236, 33%, 92%);
+  --dark-grayish-blue: hsl(234, 11%, 52%);
+  --very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue: hsl(237, 14%, 26%);
 
-        /* Body Copy */
-        --font-size: 1.125rem;
+  /* Typography */
 
-        /* Font */
-        --font-family: 'Inter', sans-serif;
-        --font-regular: 400;
-        --font-bold: 700;
+  /* Body Copy */
+  --font-size: 1.125rem;
+
+  /* Font */
+  --font-family: "Josefin Sans", sans-serif;
+  --font-regular: 400;
+  --font-bold: 700;
 }
 
 html {
-    font-size: 100%;
-    box-sizing: border-box;
+  font-size: 100%;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
 }
 
 body.dark-theme {
-    --text-color: #eee;
-    --bg-color: #121212;
+  --text-color: #eee;
+  --bg-color: #121212;
 }
 
 @media (prefers-color-scheme: dark) {
-    /* Defaults to dark theme */
-    body {
-        --text-color: #eee;
-        --bg-color: #121212;
-    }
+  /* Defaults to dark theme */
+  body {
+    --text-color: #eee;
+    --bg-color: #121212;
+  }
 
-    body.light-theme {
-        --text-color: #222;
-        --bg-color: #fff;
-    }
+  body.light-theme {
+    --text-color: #222;
+    --bg-color: #fff;
+  }
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-h1, h2, h3 {
-    margin-top: 0;
+h1,
+h2,
+h3 {
+  margin-top: 0;
 }
 
 h1 {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+.bg.light-theme {
+  height: calc(100vh - 72.47vh);
+  background: url(./images/bg-mobile-light.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg.dark-theme {
+  height: calc(100vh - 72.47vh);
+  background: url(./images/bg-mobile-dark.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  max-width: calc(100% - 3rem);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 3rem;
+  padding-bottom: 2.625rem;
+  color: #fff;
 }
 
 /* Button */
 .theme-toggle-btn {
-    border: 0;
-    background-color: red; /*should be transparent*/
-    cursor: pointer;
+  border: 0;
+  background-color: transparent; /*should be transparent*/
+  cursor: pointer;
 }
+
+/* Form */
+.create-new-todo {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  caret-color: #0000ff;
+  font-family: var(--font-family);
+}
+
+.create-new-todo:focus {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+
+  outline-color: transparent;
+  outline-width: 2px;
+  outline-style: dotted;
+}
+
+/* .todo-list {
+    margin-top: 20px;
+}
+
+.todo-item {
+    display: block;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+
+.hidden-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+
+.checkmark-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    border: 1px solid #eee;
+    background: #FFF;
+}
+
+.checkmark-bg:hover {
+    border: 2px solid #0000;
+    border-radius: 100%;
+    background:
+        linear-gradient(#fff, #fff) padding-box,
+        var(--check-background) border-box;
+}
+
+.hidden-checkbox:checked~.checkmark-bg {
+    background: var(--check-background);
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hidden-checkbox:checked ~ .checkmark-bg:after {
+    content: url("./images/icon-check.svg");
+}
+
+.delete-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+} */
