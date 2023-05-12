@@ -1,18 +1,4 @@
-import { useState, useEffect } from "react";
-
-const ThemeToggle = () => {
-  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-  const preferredTheme = prefersDarkScheme.matches
-    ? "dark-theme"
-    : "light-theme";
-  const [theme, setTheme] = useState(() => {
-    if (localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    } else {
-      return preferredTheme;
-    }
-  });
-
+const ThemeToggle = ({ theme, switchTheme }) => {
   const moonIcon = (
     <svg
       className="moonIcon"
@@ -42,32 +28,14 @@ const ThemeToggle = () => {
     </svg>
   );
 
-  const [icon, setIcon] = useState(() => {
-    if (theme === "dark-theme") {
-      return sunIcon;
-    }
-    return moonIcon;
-  });
-
   const handleClick = (e) => {
     e.preventDefault();
-    if (theme === "dark-theme") {
-      setTheme("light-theme");
-      setIcon(moonIcon);
-    } else {
-      setTheme("dark-theme");
-      setIcon(sunIcon);
-    }
+    switchTheme();
   };
-
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    document.body.className = theme;
-  }, [theme]);
 
   return (
     <button className="theme-toggle-btn" onClick={handleClick}>
-      {icon}
+      {theme === "light" ? moonIcon : sunIcon}
     </button>
   );
 };

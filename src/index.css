@@ -1,10 +1,4 @@
 :root {
-  /* Theme */
-  /* color-scheme: dark light; */
-
-  --text-color: #222;
-  --bg-color: #fff;
-
   /* Colors */
 
   /* Primary */
@@ -36,6 +30,21 @@
   --font-family: "Josefin Sans", sans-serif;
   --font-regular: 400;
   --font-bold: 700;
+
+  /*  Theme */
+  --background: grey;
+  --text-primary: black;
+  --text-secondary: royalblue;
+  --accent: purple;
+  --bg-image: url(./images/bg-mobile-light.jpg);
+}
+
+[data-theme="dark"] {
+  --background: black;
+  --text-primary: white;
+  --text-secondary: grey;
+  --accent: darkred;
+  --bg-image: url(./images/bg-mobile-dark.jpg);
 }
 
 html {
@@ -55,29 +64,6 @@ body {
   font-size: var(--font-size);
 }
 
-body.dark-theme {
-  --text-color: #eee;
-  --bg-color: #121212;
-}
-
-@media (prefers-color-scheme: dark) {
-  /* Defaults to dark theme */
-  body {
-    --text-color: #eee;
-    --bg-color: #121212;
-  }
-
-  body.light-theme {
-    --text-color: #222;
-    --bg-color: #fff;
-  }
-}
-
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
 h1,
 h2,
 h3 {
@@ -88,18 +74,14 @@ h1 {
   margin-bottom: 0;
 }
 
-.bg.light-theme {
-  height: calc(100vh - 72.47vh);
-  background: url(./images/bg-mobile-light.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+.app {
+  color: var(--text-primary);
+  background-color: var(--background);
+  transition: all 0.5s;
 
-.bg.dark-theme {
-  height: calc(100vh - 72.47vh);
-  background: url(./images/bg-mobile-dark.jpg);
+  background: var(--bg-image);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 200px;
 }
 
 .container {
@@ -135,77 +117,7 @@ h1 {
 
 .create-new-todo:focus {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-
   outline-color: transparent;
   outline-width: 2px;
   outline-style: dotted;
 }
-
-/* .todo-list {
-    margin-top: 20px;
-}
-
-.todo-item {
-    display: block;
-    padding: 16px 20px;
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.todo-label {
-    position: relative;
-    padding-left: 35px;
-    cursor: pointer;
-    user-select: none;
-}
-
-
-
-.hidden-checkbox {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-
-.checkmark-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    border-radius: 100%;
-    border: 1px solid #eee;
-    background: #FFF;
-}
-
-.checkmark-bg:hover {
-    border: 2px solid #0000;
-    border-radius: 100%;
-    background:
-        linear-gradient(#fff, #fff) padding-box,
-        var(--check-background) border-box;
-}
-
-.hidden-checkbox:checked~.checkmark-bg {
-    background: var(--check-background);
-    border: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.hidden-checkbox:checked ~ .checkmark-bg:after {
-    content: url("./images/icon-check.svg");
-}
-
-.delete-btn {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-} */
