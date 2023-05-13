@@ -1,15 +1,15 @@
 const TodoItem = ({ id, title, completed, toggleTodo, deleteTodo }) => {
   return (
     <>
-      <label className="todo-label">
-        <span className="todo-title">{title}</span>
+      <label className="label-container">
         <input
           className="hidden-checkbox"
           type="checkbox"
           onChange={(e) => toggleTodo(id, e.target.checked)}
           checked={completed}
         />
-        <span className="checkmark-bg"></span>
+        <span className="todo-title">{title}</span>
+        <span className="checkbox-bg"></span>
       </label>
       <button className="delete-btn" onClick={() => deleteTodo(id)}>
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">

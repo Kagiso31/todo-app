@@ -23,14 +23,20 @@ const CreateTodoForm = ({ addTodo }) => {
 
   return (
     <form>
-      <input
-        className="create-new-todo"
-        type="text"
-        placeholder="Create a new todo..."
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
+      <div className="create-todo-bg">
+        <div className="create-todo-container">
+          <span className="checkbox-cosmetic"></span>
+          <input
+            className="create-new-todo"
+            type="text"
+            placeholder="Create a new todo..."
+            maxLength="36"
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+      </div>
     </form>
   );
 };
