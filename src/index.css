@@ -82,7 +82,7 @@ h1 {
 
   background: var(--bg-image);
   background-repeat: no-repeat;
-  background-size: 100% 200px;
+  background-size: 100% 220px;
 }
 
 .container {
@@ -179,60 +179,68 @@ form:focus-within {
   color: grey;
 }
 
-.label-container {
-  position: relative;
-  padding-left: 32px;
+label {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
   cursor: pointer;
   user-select: none;
-  overflow-x: clip;
-}
-
-.todo-title {
-  font-size: 12px;
 }
 
 .hidden-checkbox {
   position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
 }
 
-.checkbox-bg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
+.hidden-checkbox + label {
+  position: relative;
+}
+
+/* checkbox background */
+.hidden-checkbox + label::before {
+  content: "";
+  margin-right: 12px;
   width: 20px;
-  border: 1px solid lightgrey;
+  height: 20px;
   border-radius: 100%;
   background: white;
+  border: 1px solid lightgrey;
 }
 
-.checkbox-bg:hover {
+.hidden-checkbox + label:hover::before {
   border: 2px solid #0000;
   border-radius: 100%;
   background: linear-gradient(#fff, #fff) padding-box,
     var(--check-background) border-box;
 }
 
-.label-container .hidden-checkbox:checked ~ .checkbox-bg {
+.hidden-checkbox:focus + label::before {
+  outline: transparent solid 1px;
+  border: 2px solid #0000;
+  border-radius: 100%;
+  background: linear-gradient(#fff, #fff) padding-box,
+    var(--check-background) border-box;
+}
+
+.hidden-checkbox:checked + label::before {
+  content: url("./images/icon-check.svg");
   background: var(--check-background);
   border: none;
+  padding: 5px 5px;
 }
 
-.hidden-checkbox:checked ~ .checkbox-bg:after {
-  content: url("./images/icon-check.svg");
-}
-
-.hidden-checkbox:checked + .todo-title {
+.hidden-checkbox:checked + label {
   color: lightgrey;
   text-decoration: line-through;
   text-decoration-color: grey;
+}
+
+.hidden-checkbox {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
 }
 
 .delete-btn {
