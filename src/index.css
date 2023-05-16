@@ -136,7 +136,6 @@ h1 {
   background: transparent;
   border: none;
   border-radius: 5px;
-
   caret-color: #0000ff;
   font-family: var(--font-family);
 }
@@ -159,7 +158,7 @@ form:focus-within {
   background-color: #fff;
 }
 
-.todo-list > li {
+.todo-list > .todo-item {
   list-style: none;
   padding: 16px 20px;
 }
@@ -175,11 +174,22 @@ form:focus-within {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   font-size: 12px;
   color: grey;
+  height: 46px;
 }
 
-label {
+.list-footer > span:first-child {
+  margin-left: 20px;
+}
+
+.list-footer > span:last-child {
+  margin-right: 20px;
+}
+
+.hidden-checkbox + label {
+  position: relative;
   display: flex;
   align-items: center;
   font-size: 12px;
@@ -187,15 +197,7 @@ label {
   user-select: none;
 }
 
-.hidden-checkbox {
-  position: absolute;
-}
-
-.hidden-checkbox + label {
-  position: relative;
-}
-
-/* checkbox background */
+/* Custom Checkbox background */
 .hidden-checkbox + label::before {
   content: "";
   margin-right: 12px;
@@ -206,6 +208,7 @@ label {
   border: 1px solid lightgrey;
 }
 
+/* Custom Checkbox hover*/
 .hidden-checkbox + label:hover::before {
   border: 2px solid #0000;
   border-radius: 100%;
@@ -213,6 +216,7 @@ label {
     var(--check-background) border-box;
 }
 
+/* Custom Checkbox focus*/
 .hidden-checkbox:focus + label::before {
   outline: transparent solid 1px;
   border: 2px solid #0000;
@@ -221,6 +225,7 @@ label {
     var(--check-background) border-box;
 }
 
+/* Checkmark */
 .hidden-checkbox:checked + label::before {
   content: url("./images/icon-check.svg");
   background: var(--check-background);
@@ -258,4 +263,36 @@ label {
 
 .clear-completed:hover {
   color: black;
+}
+
+.nav {
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  gap: 20px;
+
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: 5px;
+  margin-top: 150px;
+  padding: 16px 20px;
+  background: white;
+  color: grey;
+}
+
+.nav > li {
+  font-weight: var(--font-bold);
+  cursor: pointer;
+}
+
+.nav > li:hover {
+  color: black;
+}
+
+.nav li.active {
+  color: blue;
 }

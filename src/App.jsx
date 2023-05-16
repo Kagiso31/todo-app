@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CreateTodoForm from "./CreateTodoForm";
 import ThemeToggle from "./ThemeToggle";
 import TodoList from "./TodoList";
@@ -73,9 +73,21 @@ const App = () => {
 
   const clearCompleted = () => {
     setTodos((currentTodos) => {
-      return currentTodos.filter((todo) => {
-        return !todo.completed;
-      });
+      return currentTodos.filter((todo) => !todo.completed);
+    });
+  };
+
+  const [activeTodos, setActiveTodos] = useState(null);
+  const [completedTodos, setCompletedTodos] = useState(null);
+
+  const filterActive = (todos) => {
+    setActiveTodos(() => {
+      return todos.filter((todo) => !todo.completed);
+    });
+  };
+  const filterCompleted = (todos) => {
+    setCompletedTodos(() => {
+      return todos.filter((todo) => todo.completed);
     });
   };
 
@@ -104,6 +116,10 @@ const App = () => {
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
           clearCompleted={clearCompleted}
+          filterActive={filterActive}
+          filterCompleted={filterCompleted}
+          activeTodos={activeTodos}
+          completedTodos={completedTodos}
         />
       </div>
     </div>
