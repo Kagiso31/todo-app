@@ -151,7 +151,7 @@ h1 {
 
 .create-todo-container {
   position: relative;
-  padding-left: 32px;
+  padding-left: 2rem; /* 32px */
   user-select: none;
 }
 
@@ -159,8 +159,8 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-  height: 20px;
-  width: 20px;
+  width: 1.25rem; /* 20px */
+  height: 1.25rem;
   border: 1px solid var(--color-checkbox-border);
   border-radius: 100%;
   background: var(--bg-color-checkbox);
@@ -174,7 +174,7 @@ h1 {
   caret-color: var(--accent);
   color: var(--color-text-primary);
   font-family: var(--font-family);
-  font-size: 14px;
+  font-size: 0.875rem; /*14px*/
 }
 
 form:focus-within {
@@ -233,7 +233,7 @@ form:focus-within {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  font-size: 12px;
+  font-size: 0.75rem; /* 12px */
   color: var(--color-text-secondary);
   height: 46px;
 }
@@ -250,14 +250,14 @@ form:focus-within {
   position: relative;
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
   cursor: pointer;
   user-select: none;
 }
 
 @media (max-width: 768px) {
   .hidden-checkbox + label {
-    font-size: 12px;
+    font-size: 0.75rem; /* 12px */
   }
 }
 
@@ -265,8 +265,8 @@ form:focus-within {
 .hidden-checkbox + label::before {
   content: "";
   margin-right: 12px;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem; /* 20px */
+  height: 1.25rem;
   border-radius: 100%;
   background: var(--bg-color-checkbox);
   border: 1px solid var(--color-checkbox-border);
@@ -308,7 +308,7 @@ form:focus-within {
   content: url("./images/icon-check.svg");
   background: var(--check-background);
   border: none;
-  padding: 5px 5px;
+  padding: 0.3125rem 0.3125rem; /* 5px */
 }
 
 .hidden-checkbox:checked + label {
@@ -363,7 +363,7 @@ form:focus-within {
     padding: 16px 20px;
     background: var(--bg-color-textbox);
     color: var(--color-text-secondary);
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
 }
