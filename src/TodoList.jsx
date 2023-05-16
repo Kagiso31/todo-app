@@ -36,8 +36,6 @@ const TodoList = ({
 
   return (
     <ul className="todo-list">
-      {todos.length === 0 && "No Todos Added"}
-
       {activeTab === "all" && (
         <AllTab deleteTodo={deleteTodo} toggleTodo={toggleTodo} todos={todos} />
       )}
