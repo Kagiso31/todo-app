@@ -13,13 +13,13 @@
   --very-dark-grayish-blue: hsl(235, 19%, 35%);
 
   /* Dark Theme */
-  --very-dark-blue: hsl(235, 21%, 11%);
-  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
-  --light-grayish-blue: hsl(234, 39%, 85%);
-  --light-grayish-blue-hover: hsl(236, 33%, 92%);
-  --dark-grayish-blue: hsl(234, 11%, 52%);
-  --very-dark-grayish-blue: hsl(233, 14%, 35%);
-  --very-dark-grayish-blue: hsl(237, 14%, 26%);
+  --dm-very-dark-blue: hsl(235, 21%, 11%);
+  --dm-very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  --dm-light-grayish-blue-1: hsl(234, 39%, 85%);
+  --dm-light-grayish-blue-2: hsl(236, 33%, 92%);
+  --dm-dark-grayish-blue: hsl(234, 11%, 52%);
+  --dm-very-dark-grayish-blue-1: hsl(233, 14%, 35%);
+  --dm-very-dark-grayish-blue-2: hsl(237, 14%, 26%);
 
   /* Typography */
 
@@ -32,10 +32,16 @@
   --font-bold: 700;
 
   /*  Theme */
-  --background: grey;
-  --text-primary: black;
-  --text-secondary: royalblue;
-  --accent: purple;
+  --bg-color-body: var(--very-light-gray);
+  --bg-color-textbox: #fff;
+  --bg-color-checkbox: #fff;
+  --color-text-primary: var(--very-dark-grayish-blue);
+  --color-text-secondary: var(--dark-grayish-blue);
+  --color-text-disabled: var(--light-grayish-blue);
+  --color-line-through: var(--dark-grayish-blue);
+  --color-horizontal-line: var(--very-light-grayish-blue);
+  --color-checkbox-border: var(--light-grayish-blue);
+  --accent: var(--bright-blue);
   --bg-image: url(./images/bg-mobile-light.jpg);
 }
 
@@ -46,10 +52,15 @@
 }
 
 [data-theme="dark"] {
-  --background: black;
-  --text-primary: white;
-  --text-secondary: grey;
-  --accent: darkred;
+  --bg-color-body: var(--dm-very-dark-blue);
+  --bg-color-textbox: var(--dm-very-dark-desaturated-blue);
+  --bg-color-checkbox: var(--dm-very-dark-desaturated-blue);
+  --color-text-primary: var(--dm-light-grayish-blue-2);
+  --color-text-secondary: var(--dm-very-dark-grayish-blue-1);
+  --color-text-disabled: var(--dm-very-dark-grayish-blue-1);
+  --color-line-through: var(--dm-dark-grayish-blue);
+  --color-horizontal-line: var(--dm-very-dark-grayish-blue-1);
+  --color-checkbox-border: var(--dm-very-dark-grayish-blue-1);
   --bg-image: url(./images/bg-mobile-dark.jpg);
 }
 
@@ -74,7 +85,8 @@ body {
   padding: 0;
   font-family: var(--font-family);
   font-size: var(--font-size);
-  background: lightgrey;
+  background-color: var(--bg-color-body);
+  color: var(--color-text-primary);
 }
 
 h1,
@@ -88,18 +100,15 @@ h1 {
 }
 
 .app {
-  color: var(--text-primary);
-  background-color: var(--background);
   transition: all 0.5s;
-
-  background: var(--bg-image);
+  background-image: var(--bg-image);
   background-repeat: no-repeat;
   background-size: 100% 220px;
 }
 
 @media (min-width: 768px) {
   .app {
-    background: var(--bg-image);
+    background-image: var(--bg-image);
     background-repeat: no-repeat;
     background-size: 100% 220px;
   }
@@ -135,7 +144,7 @@ h1 {
 .create-todo-bg {
   width: 100%;
   padding: 14px 20px;
-  background: white;
+  background: var(--bg-color-textbox);
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
@@ -152,9 +161,9 @@ h1 {
   left: 0;
   height: 20px;
   width: 20px;
-  border: 1px solid lightgrey;
+  border: 1px solid var(--color-checkbox-border);
   border-radius: 100%;
-  background: white;
+  background: var(--bg-color-checkbox);
 }
 
 .create-new-todo {
@@ -162,7 +171,8 @@ h1 {
   background: transparent;
   border: none;
   border-radius: 5px;
-  caret-color: #0000ff;
+  caret-color: var(--accent);
+  color: var(--color-text-primary);
   font-family: var(--font-family);
   font-size: 14px;
 }
@@ -177,12 +187,27 @@ form:focus-within {
   outline-style: dotted;
 }
 
+::placeholder {
+  color: var(--color-text-secondary);
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--color-text-secondary);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--color-text-secondary);
+}
+
 /* Todo List */
 .todo-list {
   padding: 0;
   width: 100%;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: var(--bg-color-textbox);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .todo-list > .todo-item {
@@ -194,7 +219,7 @@ form:focus-within {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid var(--color-horizontal-line);
 }
 
 @media (min-width: 992px) {
@@ -209,7 +234,7 @@ form:focus-within {
   align-items: center;
   position: relative;
   font-size: 12px;
-  color: grey;
+  color: var(--color-text-secondary);
   height: 46px;
 }
 
@@ -243,15 +268,19 @@ form:focus-within {
   width: 20px;
   height: 20px;
   border-radius: 100%;
-  background: white;
-  border: 1px solid lightgrey;
+  background: var(--bg-color-checkbox);
+  border: 1px solid var(--color-checkbox-border);
 }
 
 /* Custom Checkbox hover*/
 .hidden-checkbox + label:hover::before {
   border: 2px solid #0000;
   border-radius: 100%;
-  background: linear-gradient(#fff, #fff) padding-box,
+  background: linear-gradient(
+        var(--bg-color-checkbox),
+        var(--bg-color-checkbox)
+      )
+      padding-box,
     var(--check-background) border-box;
 }
 
@@ -260,7 +289,11 @@ form:focus-within {
   outline: transparent solid 1px;
   border: 2px solid #0000;
   border-radius: 100%;
-  background: linear-gradient(#fff, #fff) padding-box,
+  background: linear-gradient(
+        var(--bg-color-checkbox),
+        var(--bg-color-checkbox)
+      )
+      padding-box,
     var(--check-background) border-box;
 }
 
@@ -279,9 +312,9 @@ form:focus-within {
 }
 
 .hidden-checkbox:checked + label {
-  color: lightgrey;
+  color: var(--color-text-disabled);
   text-decoration: line-through;
-  text-decoration-color: grey;
+  text-decoration-color: var(--color-line-through);
 }
 
 .hidden-checkbox {
@@ -317,7 +350,7 @@ form:focus-within {
 }
 
 .clear-completed:hover {
-  color: black;
+  color: var(--color-text-primary);
 }
 
 @media (max-width: 992px) {
@@ -328,9 +361,10 @@ form:focus-within {
     border-radius: 5px;
     margin-top: 150px;
     padding: 16px 20px;
-    background: white;
-    color: grey;
+    background: var(--bg-color-textbox);
+    color: var(--color-text-secondary);
     font-size: 14px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -349,9 +383,9 @@ form:focus-within {
 }
 
 .nav > li:hover {
-  color: black;
+  color: var(--color-text-primary);
 }
 
 .nav li.active {
-  color: blue;
+  color: var(--accent);
 }

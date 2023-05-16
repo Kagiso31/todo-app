@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreateTodoForm from "./CreateTodoForm";
 import ThemeToggle from "./ThemeToggle";
 import TodoList from "./TodoList";
@@ -103,8 +103,12 @@ const App = () => {
     setTheme(newTheme);
   };
 
+  useEffect(() => {
+    document.body.setAttribute("data-theme", theme);
+  });
+
   return (
-    <div className="app" data-theme={theme}>
+    <div className="app">
       <div className="container">
         <div className="header">
           <h1>T O D O</h1>
